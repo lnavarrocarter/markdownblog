@@ -1,4 +1,4 @@
-# Markdown Blog
-A lightweight, fast, markdown-based publishing platform, with different themes.
+# The Markdown Blog
+Un sistema de publicación liviano, rápido, personalizable y basado en markdown, hecho en PHP.
 
-## 
+## Características
