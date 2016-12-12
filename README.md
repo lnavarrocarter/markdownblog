@@ -11,9 +11,12 @@ Un sistema de publicación liviano, rápido, personalizable y basado en markdown
 
 ##¿Qué necesito saber para usar Markdownblog?</h2>
 Para usar Markdownblog necesitas saber sólo 3 cosas:
-1 Saber escribir en [lenguaje Markdown](http://markdown.es/) y tener un editor de texto apropiado
-2 Saber cómo usar un cliente FTP
-3 Saber cómo funciona un hosting web
+
+1. Saber escribir en [lenguaje Markdown](http://markdown.es/) y tener un editor de texto apropiado
+
+2. Saber cómo usar un cliente FTP
+
+3. Saber cómo funciona un hosting web
 
 ##¿Cómo lo instalo?
 
