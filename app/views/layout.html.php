@@ -53,10 +53,6 @@
 	</section>
 
 	<script src="<?php echo site_url() ?>assets/js/scripts.js"></script>
-	
-	<script>
-		
-	</script>
 
 </body>
 </html>
