@@ -4,7 +4,7 @@
   <meta http-equiv='Content-Type' content='text/html; charset=utf-8'>
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NAVARROCARTER - <?php echo $title;?></title>
+  <title><?php echo $sitedata->options->site_name;?> - <?php echo $title;?></title>
   <meta name="author" content="Matías Navarro">
 
   <meta name="description" content="Este es el sitio personal de Matías Navarro Carter, desarrollador web freelance. Aquí Matías escribe y comparte cursos, código y opiniones sobre nuevas tecnologías. Además de eso, muestra su trabajo.">
@@ -20,6 +20,7 @@
   <link href="<?php echo base_url();?>assets/css/style.css" rel="stylesheet">
   <link href="<?php echo base_url();?>assets/css/flexslider.css" rel="stylesheet">
   <link href="<?php echo base_url();?>assets/css/bootstrap-markdown.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="<?php echo base_url();?>assets/css/atom-dark.css">
   <link href='//fonts.googleapis.com/css?family=Raleway:400,300,700,500' rel='stylesheet' type='text/css'>
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!--[if lt IE 9]>
@@ -50,6 +51,9 @@
 <script src="<?php echo base_url();?>assets/js/markdown.js" type="text/javascript"></script>
 <script src="<?php echo base_url();?>assets/js/bootstrap-markdown.js" type="text/javascript"></script>
 <script src="<?php echo base_url();?>assets/js/jquery.mixitup.min.js" type="text/javascript"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"></script>
+<script src="<?php echo base_url();?>assets/js/unsaved_changes.js" type="text/javascript"></script>
 <script src="<?php echo base_url();?>assets/js/app.js" type="text/javascript"></script>
+<script>hljs.initHighlightingOnLoad();</script>
 </body>
 </html>

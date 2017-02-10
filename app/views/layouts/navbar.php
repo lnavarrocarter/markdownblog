@@ -7,7 +7,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="<?php echo base_url();?>"><img src="<?php echo base_url();?>assets/img/logo_top.png" class="img-responsive" alt="Sentora - The open-source web hosting control panel"></a>
+      <a class="navbar-brand" href="<?php echo base_url();?>"><img class="hidden-lg hidden-md" src="<?php echo base_url();?>assets/img/logo_top.png" class="img-responsive" alt="<?php echo $sitedata->options->site_name;?> - <?php echo $sitedata->options->site_motto;?>"> <span class="hidden-xs hidden-sm"><?php echo $sitedata->options->site_name;?></span></a>
     </div>
     <div class="navbar-collapse collapse">
       <ul class="nav navbar-nav navbar-right">

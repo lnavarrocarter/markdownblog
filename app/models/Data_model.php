@@ -10,17 +10,6 @@ class Data_model extends CI_Model {
 		return $json_output;
 	}
 
-	public function get_entry($slug) {
-		$output = $this->get_all_data();
-		foreach ($output->entries as $entry){
-        	if ($entry->slug != $slug ) {
-        		continue;
-        	} else {
-        		return $entry;
-        	}
-        }
-	}
-
 	###################
 	# CRUD DE SLIDERS #
 	###################
@@ -168,14 +157,26 @@ class Data_model extends CI_Model {
 		return $output->entries;
 	}
 
+	#FIXME No se qué onda esta funcion. Parece estar repetida.
+	public function get_entry($slug) {
+		$output = $this->get_all_data();
+		foreach ($output->entries as $entry){
+        	if ($entry->slug != $slug ) {
+        		continue;
+        	} else {
+        		return $entry;
+        	}
+        }
+	}
+
 	// Obtener entrada por slug
 	public function get_entry_slug($slug) {
 		$output = $this->get_all_data();
-		foreach ($output->pages as $page){
-        	if ($page->slug != $slug ) {
+		foreach ($output->entries as $entry){
+        	if ($entry->slug != $slug ) {
         		continue;
         	} else {
-        		return $page;
+        		return $entry;
         	}
         }
 	}
@@ -253,4 +254,10 @@ class Data_model extends CI_Model {
 		$result2 = file_put_contents($mdurl, $this->input->post('content'));
 	}
 
+	###################
+	# CRUD DE AJUSTES #
+	###################
+
+	
+	
 }

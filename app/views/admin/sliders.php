@@ -23,10 +23,11 @@
                 </tr>
             </thead>
             <tbody>
+                <?php $i = 1;?>
                 <?php foreach ($sliderdata as $slider):?>
                 <tr>
                     <td>
-                        <?php echo $slider->order;?>
+                        <?php echo $i;?>
                     </td>
                     <td>
                         <?php echo $slider->title;?>
@@ -39,6 +40,7 @@
                     </td>
                     <td><a href="<?php echo base_url();?>admin/delete_slider/<?php echo $slider->id;?>" class="btn btn-danger btn-xs"> Eliminar</a> <a href="<?php echo base_url();?>admin/edit_slider/<?php echo $slider->id;?>" class="btn btn-default btn-xs"> Editar</a></td>
 					</tr>
+                    <?php $i++;?>
 				<?php endforeach;?>
 			</tbody>
         </table>        

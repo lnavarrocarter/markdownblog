@@ -266,4 +266,33 @@ class Admin extends CI_Controller {
 		$this->session->set_flashdata('success','Tu entrada ha sido editada exitosamente.');
 		redirect('admin/entries');
 	}
+
+	####################################|
+	# FUNCIONES RELACIONADAS A AJUSTES #
+	####################################
+
+	// La vista que muestra las opciones
+	public function settings(){
+		// Ir a buscar los datos
+        $sitedata = $this->Data_model->get_all_data();
+		// Título de la Página
+		$data['title'] = 'Ajustes';
+		// Vista principal a cargar
+		$data['main_content'] = 'admin/settings';
+		// ¿Navbar?
+		$data['navbar'] = true;
+		// ¿Barra de título?
+		$data['pagetitle'] = true;
+		// ¿Footer?
+		$data['footer'] = true;
+		// Breadcrumbs
+		$this->breadcrumbs->unshift('<i class="ion-home"></i> Inicio', '/');
+		$this->breadcrumbs->push('Administrar', '#');
+		$this->breadcrumbs->push('Ajustes', '/admin/ajustes/', true);
+		$data['breadcrumb'] = $this->breadcrumbs->show();
+        // Cargar la vista
+        $data['sitedata'] = $sitedata;
+		$this->load->view('layouts/main', $data);
+	}
+
 }

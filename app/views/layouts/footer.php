@@ -1,7 +1,7 @@
 <section id="footer-defoult" class="padding-60">
   <div class="container">
     <div class="row">
-      <div class="col-md-3 margin-btm20">
+      <div class="col-md-4 margin-btm20">
         <div class="footer-column">
           <h3>Matías Navarro Carter</h3>
           <p class="margin-btm20">
@@ -15,7 +15,7 @@
           </ul>
         </div><!--footer columns end-->
       </div>
-      <div class="col-md-6 margin-btm20">
+      <div class="col-md-4 margin-btm20">
         <div class="footer-column">
           <h3>Últimas Entradas</h3>
           <ul class="list-unstyled contact-list margin-btm20">
@@ -25,7 +25,7 @@
           </ul>
         </div><!--footer columns end-->
       </div>
-      <div class="col-md-3 margin-btm20">
+      <div class="col-md-4 margin-btm20">
         <div class="footer-column">
           <h3>The Markdown Blog</h3>
           <p class="small">Este sitio funciona con The Markdown Blog, un gestor de contenido PHP rápido, liviano, no-sql y basado en Markdown.</a>!</p>
@@ -44,7 +44,7 @@
         <a href="<?php echo base_url();?>"><img src="<?php echo base_url();?>assets/img/watermark.png" alt="Sentora - The open-source web hosting control panel"></a>
       </div>
       <div class="col-md-12 text-center">
-        <span><?php echo $sitedata->options->footer_text;?></span>
+        <span><?php echo $sitedata->options->footer_copy_text;?></span>
       </div>
     </div>
   </div><!--container-->

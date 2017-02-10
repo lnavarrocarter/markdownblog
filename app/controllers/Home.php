@@ -12,7 +12,7 @@ class Home extends CI_Controller {
 		// Ejecutar Modelo y ponerlo en variable
         $sitedata = $this->Data_model->get_all_data();
 		// Título de la Página
-		$data['title'] = 'Desarrollador Web';
+		$data['title'] = $sitedata->options->site_motto;
 		// Vista principal a cargar
 		$data['main_content'] = 'home';
 		// ¿Navbar?
