@@ -25,7 +25,7 @@
         <!-- FIN: Menú Página -->
         </li>
         <li class="dropdown">
-          <a href="/download">Blog</a>
+          <a href="<?php echo base_url();?>home/test">Test</a>
         </li>
         <li class="dropdown">
           <a href="/donate">Donar</a>

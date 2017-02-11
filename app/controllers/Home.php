@@ -46,11 +46,18 @@ class Home extends CI_Controller {
 		$this->breadcrumbs->push($pagedata->title, '/home/page/'.$pagedata->slug, true);
 		$data['breadcrumb'] = $this->breadcrumbs->show();
 		// Pasar markdown y el parsedown
-		$data['parsedown'] = new Parsedown();
+		$data['parsedown'] = new ParsedownExtra();
 		$data['mdfile'] = $pagedata->id;
         // Cargar la vista
         $data['pagedata'] = $pagedata;
         $data['sitedata'] = $sitedata;
 		$this->load->view('layouts/main', $data);
+	}
+
+	public function test() {
+		$query = $this->jsondb->create('entries',array('name' => 'Jose Pedro','slug' => 'nolose'));
+		echo '<pre>';
+		print_r($query);
+		exit;
 	}
 }

@@ -23,41 +23,37 @@
     <div class="row">
       <div class="col-md-3 margin-btm20">
         <div class="services-box">
-          <i class="ion-heart"></i>
-          <h3>Simplified management</h3>
+          <i class="ion-speedometer"></i>
+          <h3>Veloz</h3>
           <p>
-            Sentora is designed to simplify web hosting management, it gives your clients the ability to quickly and
-            easily manage their web hosting.
+            Debido a que no utiliza un servicio de base de datos externo, la velocidad de The Markdown Blog es increíble. ¿No te convence? ¡Prueba esta misma página!
           </p>
         </div>
       </div>
       <div class="col-md-3 margin-btm20">
         <div class="services-box">
-          <i class="ion-help-buoy"></i>
-          <h3>Supported</h3>
+          <i class="ion-checkmark"></i>
+          <h3>Sencillo</h3>
           <p>
-            We provide both community-based (free) and <a href="support">subscription-based premium support</a> services
-            to cater for both personal and commercial users!
+            ¡Olvidate de los complicados paneles de administración! En The Markdown Blog todo es muy claro, comprensible y sencillo de utilizar. ¡Compruébalo!
           </p>
         </div>
       </div>
       <div class="col-md-3 margin-btm20">
         <div class="services-box">
-          <i class="ion-android-share"></i>
-          <h3>Extendable</h3>
+          <i class="ion-settings"></i>
+          <h3>Personalizable</h3>
           <p>
-            Our Add-ons store provides our users with a central repository to install, rate, sell and publish modules,
-            themes and localisations.
+            Cambia los colores, crea bloques de contenido y aplica CSS y JS personalizado. Hasta puedes crear un tema completo. ¡Las posibilidades son infinitas!
           </p>
         </div>
       </div>
       <div class="col-md-3 margin-btm20">
         <div class="services-box">
           <i class="ion-android-developer"></i>
-          <h3>Open-souce</h3>
+          <h3>Abierto</h3>
           <p>
-            Released under the <a href="http://www.gnu.org/licenses/gpl-3.0.html" target="_blank">GPLv3</a>,
-            Sentora is the perfect choice for the most small to medium ISPs looking for a cost effective, extendable platform.
+            The Markdown Blog es un software de código abierto, lo que significa que cualquiera puede ver el código, y contribuir a su mejora. ¡En serio!
           </p>
         </div>
       </div>
