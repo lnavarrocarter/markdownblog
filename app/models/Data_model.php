@@ -4,120 +4,97 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Data_model extends CI_Model {
 
 	public function get_all_data(){
-		$jsonurl = 'app/data/data.json';
-		$json = file_get_contents($jsonurl,0,null,null);
-		$json_output = json_decode($json);
-		return $json_output;
+		$query = $this->jsondb->get_all();
+		return $query;
 	}
 
 	###################
 	# CRUD DE SLIDERS #
 	###################
 
-	// Obtener todos los sliders
+	// Obtener todos los sliders por orden
 	public function get_sliders() {
-		$output = $this->get_all_data();
-		return $output->sliders;
+		$query = $this->jsondb->get('sliders',false,false,'order');
+		return $query;
+	}
+
+	// Obtener todos los sliders publicados por orden
+	public function get_published_sliders() {
+		$query = $this->jsondb->get('sliders','is_published','on','order');
+		return $query;
 	}
 
 	// Crear un slider
 	public function new_slider() {
 		$data = array(
-				'id' 		=> uniqid(),
-				'title'		=> $this->input->post('title'),
-				'lead'		=> $this->input->post('lead'),
-				'btn_text'	=> $this->input->post('text'),
-				'btn_link'	=> $this->input->post('url'),
-				'order'		=> $this->input->post('order')
+				'title'			=> $this->input->post('title'),
+				'lead'			=> $this->input->post('lead'),
+				'btn_text'		=> $this->input->post('text'),
+				'btn_link'		=> $this->input->post('url'),
+				'is_published' => $this->input->post('is_published'),
+				'order'			=> $this->input->post('order')
 			);
-		$jsonurl = 'app/data/data.json';
-		$inp = file_get_contents($jsonurl,0,null,null);
-		$tempArray = json_decode($inp,true);
-		array_push($tempArray['sliders'], $data);
-		$jsonData = json_encode($tempArray, JSON_PRETTY_PRINT);
-		$result = file_put_contents($jsonurl, $jsonData);
+		$this->jsondb->create('sliders', $data);
 	}
 
 	// Eliminar un slider
 	public function remove_slider($id) {
-		$jsonurl = 'app/data/data.json';
-		$inp = file_get_contents($jsonurl,0,null,null);
-		$tempArray = json_decode($inp,true);
-		foreach($tempArray['sliders'] as $key => $value) {
-		   if($value['id'] == $id){
-		      unset($tempArray['sliders'][$key]);
-		   }
-		};
-		$jsonData = json_encode($tempArray, JSON_PRETTY_PRINT);
-		$result = file_put_contents($jsonurl, $jsonData);
+		$this->jsondb->delete('sliders','id',$id);
+	}
+
+	// Obtener un slider por id
+	public function get_slider_id($id) {
+		$query = $this->jsondb->get_one('sliders', 'id', $id);
+		return $query;
 	}
 
 	###################
 	# CRUD DE PÁGINAS #
 	###################
 
-	// Obtener todas las páginas
+	// Obtener todas las páginas ordenadas por fecha
 	public function get_pages() {
-		$output = $this->get_all_data();
-		return $output->pages;
+		$query = $this->jsondb->get('pages',false, false, 'date');
+		return $query;
+	}
+
+	// Obtener todas las páginas publicadas ordenadas por orden
+	public function get_published_pages() {
+		$query = $this->jsondb->get('pages', 'is_published', 'on','order');
+		return $query;
 	}
 
 	// Obtener página por slug
 	public function get_page_slug($slug) {
-		$output = $this->get_all_data();
-		foreach ($output->pages as $page){
-        	if ($page->slug != $slug ) {
-        		continue;
-        	} else {
-        		return $page;
-        	}
-        }
+		$query = $this->jsondb->get_one('pages','slug',$slug);
+		return $query;
 	}
 
 	// Obtener página por id
 	public function get_page_id($id) {
-		$output = $this->get_all_data();
-		foreach ($output->pages as $page){
-        	if ($page->id != $id ) {
-        		continue;
-        	} else {
-        		return $page;
-        	}
-        }
+		$query = $this->jsondb->get_one('pages','id',$id);
+		return $query;
 	}
 
 	// Crear una página
 	public function new_page() {
 		$data = array(
-				'id' 			=> uniqid(),
 				'slug'			=> $this->input->post('slug'),
 				'title'			=> $this->input->post('title'),
 				'date'			=> time(),
+				'order'			=> $this->input->post('order'),
 				'is_published'	=> $this->input->post('is_published')
 			);
-		$jsonurl = 'app/data/data.json';
-		$inp = file_get_contents($jsonurl,0,null,null);
-		$tempArray = json_decode($inp,true);
-		array_push($tempArray['pages'], $data);
-		$jsonData = json_encode($tempArray, JSON_PRETTY_PRINT);
-		$result = file_put_contents($jsonurl, $jsonData);
+		
+		$id = $this->jsondb->create('pages', $data);
 
-		$mdurl = 'app/data/md/'.$data['id'].'.md';
+		$mdurl = 'app/data/md/'.$id.'.md';
 		$result2 = file_put_contents($mdurl, $this->input->post('content'));
 	}
 
 	// Eliminar una página
 	public function remove_page($id) {
-		$jsonurl = 'app/data/data.json';
-		$inp = file_get_contents($jsonurl,0,null,null);
-		$tempArray = json_decode($inp,true);
-		foreach($tempArray['pages'] as $key => $value) {
-		   if($value['id'] == $id){
-		      unset($tempArray['pages'][$key]);
-		   }
-		};
-		$jsonData = json_encode($tempArray, JSON_PRETTY_PRINT);
-		$result = file_put_contents($jsonurl, $jsonData);
+		$this->jsondb->delete('pages','id',$id);
 
 		$mdurl = 'app/data/md/'.$id.'.md';
 		$result2 = unlink($mdurl);
@@ -130,18 +107,8 @@ class Data_model extends CI_Model {
 				'title'			=> $this->input->post('title'),
 				'is_published'	=> $this->input->post('is_published')
 			);
-		$jsonurl = 'app/data/data.json';
-		$inp = file_get_contents($jsonurl,0,null,null);
-		$tempArray = json_decode($inp,true);
-		foreach($tempArray['pages'] as $key => $value) {
-		   if($value['id'] == $id){
-		   		$tempArray['pages'][$key]['slug'] = $data['slug'];
-		   		$tempArray['pages'][$key]['title'] = $data['title'];
-		   		$tempArray['pages'][$key]['is_published'] = $data['is_published'];
-		   	}
-		};
-		$jsonData = json_encode($tempArray, JSON_PRETTY_PRINT);
-		$result = file_put_contents($jsonurl, $jsonData);
+		
+		$this->jsondb->update('pages','id',$id, $data);
 
 		$mdurl = 'app/data/md/'.$id.'.md';
 		$result2 = file_put_contents($mdurl, $this->input->post('content'));
@@ -151,80 +118,47 @@ class Data_model extends CI_Model {
 	# CRUD DE ENTRADAS #
 	####################
 
-	// Obtener todas las entradas
+	// Obtener todas las entradas ordenadas por fecha
 	public function get_entries() {
-		$output = $this->get_all_data();
-		return $output->entries;
+		$query = $this->jsondb->get('entries',false, false, 'date');
+		return $query;
 	}
 
-	#FIXME No se qué onda esta funcion. Parece estar repetida.
-	public function get_entry($slug) {
-		$output = $this->get_all_data();
-		foreach ($output->entries as $entry){
-        	if ($entry->slug != $slug ) {
-        		continue;
-        	} else {
-        		return $entry;
-        	}
-        }
+	// Obtener todas las entradas publicadas ordenadas por fecha
+	public function get_published_entries() {
+		$query = $this->jsondb->get('entries', 'is_published', 'on', 'date');
+		return $query;
 	}
 
 	// Obtener entrada por slug
 	public function get_entry_slug($slug) {
-		$output = $this->get_all_data();
-		foreach ($output->entries as $entry){
-        	if ($entry->slug != $slug ) {
-        		continue;
-        	} else {
-        		return $entry;
-        	}
-        }
+		$query = $this->jsondb->get_one('entries', 'slug', $slug);
+		return $query;
 	}
 
 	// Obtener entrada por id
 	public function get_entry_id($id) {
-		$output = $this->get_all_data();
-		foreach ($output->entries as $entry){
-        	if ($entry->id != $id ) {
-        		continue;
-        	} else {
-        		return $entry;
-        	}
-        }
+		$query = $this->jsondb->get_one('entries', 'id', $id);
+		return $query;
 	}
 
 	// Crear una entrada
 	public function new_entry() {
 		$data = array(
-				'id' 			=> uniqid(),
 				'slug'			=> $this->input->post('slug'),
 				'title'			=> $this->input->post('title'),
 				'date'			=> time(),
 				'is_published'	=> $this->input->post('is_published')
 			);
-		$jsonurl = 'app/data/data.json';
-		$inp = file_get_contents($jsonurl,0,null,null);
-		$tempArray = json_decode($inp,true);
-		array_push($tempArray['entries'], $data);
-		$jsonData = json_encode($tempArray, JSON_PRETTY_PRINT);
-		$result = file_put_contents($jsonurl, $jsonData);
+		$id = $this->jsondb->create('entries', $data);
 
-		$mdurl = 'app/data/md/'.$data['id'].'.md';
+		$mdurl = 'app/data/md/'.$id.'.md';
 		$result2 = file_put_contents($mdurl, $this->input->post('content'));
 	}
 
 	// Eliminar una entrada
 	public function remove_entry($id) {
-		$jsonurl = 'app/data/data.json';
-		$inp = file_get_contents($jsonurl,0,null,null);
-		$tempArray = json_decode($inp,true);
-		foreach($tempArray['entries'] as $key => $value) {
-		   if($value['id'] == $id){
-		      unset($tempArray['entries'][$key]);
-		   }
-		};
-		$jsonData = json_encode($tempArray, JSON_PRETTY_PRINT);
-		$result = file_put_contents($jsonurl, $jsonData);
+		$this->jsondb->remove('entries', 'id', $id);
 
 		$mdurl = 'app/data/md/'.$id.'.md';
 		$result2 = unlink($mdurl);
@@ -237,18 +171,7 @@ class Data_model extends CI_Model {
 				'title'			=> $this->input->post('title'),
 				'is_published'	=> $this->input->post('is_published')
 			);
-		$jsonurl = 'app/data/data.json';
-		$inp = file_get_contents($jsonurl,0,null,null);
-		$tempArray = json_decode($inp,true);
-		foreach($tempArray['entries'] as $key => $value) {
-		   if($value['id'] == $id){
-		   		$tempArray['entries'][$key]['slug'] = $data['slug'];
-		   		$tempArray['entries'][$key]['title'] = $data['title'];
-		   		$tempArray['entries'][$key]['is_published'] = $data['is_published'];
-		   	}
-		};
-		$jsonData = json_encode($tempArray, JSON_PRETTY_PRINT);
-		$result = file_put_contents($jsonurl, $jsonData);
+		$this->jsondb->update('entries', 'id', $id, $data);	
 
 		$mdurl = 'app/data/md/'.$id.'.md';
 		$result2 = file_put_contents($mdurl, $this->input->post('content'));
@@ -258,6 +181,15 @@ class Data_model extends CI_Model {
 	# CRUD DE AJUSTES #
 	###################
 
-	
+	// Obtener los ajustes
+	public function get_options() {
+		$query = $this->jsondb->get('options');
+		return $query;
+	}
+
+	// Actualizar los ajustes
+	public function update_options($data) {
+		$this->jsondb->update_options($data);
+	}
 	
 }

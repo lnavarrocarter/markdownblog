@@ -27,12 +27,16 @@
                         <?php echo $i;?>
                     </td>
                     <td>
-                        <a href="<?php echo base_url();?>home/page/<?php echo $page->slug;?>"><?php echo $page->title;?></a>
+                        <?php if ($page['is_published'] == "on"):?>
+                         <span class="label label-success"><i data-toggle="tooltip" data-placement="top" data-original-title="Publicada" class="fa fa-check fa-fw"></i></span> <a href="<?php echo base_url();?>home/page/<?php echo $page['slug'];?>"> <?php echo $page['title'];?></a>
+                        <?php else:?>
+                        <span class="label label-danger"><i data-toggle="tooltip" data-placement="top" data-original-title="No Publicada" class="fa fa-times fa-fw"></i></span> <a href="<?php echo base_url();?>home/page/<?php echo $page['slug'];?>"> <?php echo $page['title'];?></a>
+                        <?php endif;?>
                     </td>
                     <td>
-                        <?php echo date('d/m/Y', $page->date);?>
+                        <?php echo date('d/m/Y', $page['date']);?>
                     </td>
-                    <td><a href="<?php echo base_url();?>admin/delete_page/<?php echo $page->id;?>" class="btn btn-danger btn-xs">Eliminar</a> <a href="<?php echo base_url();?>admin/edit_page/<?php echo $page->id;?>" class="btn btn-default btn-xs"> Editar</a></td>
+                    <td><a href="<?php echo base_url();?>admin/delete_page/<?php echo $page['id'];?>" class="btn btn-danger btn-xs">Eliminar</a> <a href="<?php echo base_url();?>admin/edit_page/<?php echo $page['id'];?>" class="btn btn-default btn-xs"> Editar</a></td>
 					</tr>
                 <?php $i++;?>
 				<?php endforeach;?>

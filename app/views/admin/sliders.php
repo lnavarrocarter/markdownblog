@@ -30,15 +30,15 @@
                         <?php echo $i;?>
                     </td>
                     <td>
-                        <?php echo $slider->title;?>
+                        <?php echo $slider['title'];?>
                     </td>
                     <td>
-                        <?php echo $slider->lead;?>
+                        <?php echo $slider['lead'];?>
                     </td>
                     <td>
-                        <a href="<?php echo $slider->btn_link;?>" target="_blank"><?php echo $slider->btn_text;?></a>
+                        <a href="<?php echo $slider['btn_link'];?>" target="_blank"><?php echo $slider['btn_text'];?></a>
                     </td>
-                    <td><a href="<?php echo base_url();?>admin/delete_slider/<?php echo $slider->id;?>" class="btn btn-danger btn-xs"> Eliminar</a> <a href="<?php echo base_url();?>admin/edit_slider/<?php echo $slider->id;?>" class="btn btn-default btn-xs"> Editar</a></td>
+                    <td><a href="<?php echo base_url();?>admin/delete_slider/<?php echo $slider['id'];?>" class="btn btn-danger btn-xs"> Eliminar</a> <a href="<?php echo base_url();?>admin/edit_slider/<?php echo $slider['id'];?>" class="btn btn-default btn-xs"> Editar</a></td>
 					</tr>
                     <?php $i++;?>
 				<?php endforeach;?>
@@ -76,10 +76,13 @@
 					    <label for="order">Orden: </label>
 					    <input type="number" class="form-control" name="order" aria-describedby="emailHelp" placeholder="Escribe el orden de prioridad del slider...">
 				  	</div>
+                     <label class="checkbox">
+                        <input name="is_published" type="checkbox"> ¿Publicado?
+                    </label>
 	            </div>
 	            <div class="modal-footer">
-	                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-	                <input type="submit" class="btn btn-primary" value="Crear">            
+	                <button type="button" id="modalCancel" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+	                <input type="submit" class="btn btn-primary" id="submitBtn" value="Crear">            
 	          	</div>
         	</form>
         </div>

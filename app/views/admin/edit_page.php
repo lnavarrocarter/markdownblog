@@ -19,9 +19,18 @@
             <div class="form-group">
                 <div class="input-group">
                     <span class="input-group-addon"><strong>Slug: </strong></span>
+                    <span class="input-group-addon"><?php echo base_url();?>home/page/</span>
                     <input name="slug" class="form-control" type="text" value="<?php echo $pagedata->slug;?>" placeholder="Escribe el slug de tu página..." />
                 </div>
                 <small class="form-text text-muted">El slug es el identificador de la url de tu página.</small>
+            </div>
+            <br/>
+            <div class="form-group">
+                <div class="input-group">
+                    <span class="input-group-addon"><strong>Orden: </strong></span>
+                    <input name="order" class="form-control" type="number" value="<?php echo $pagedata->order;?>" placeholder="Escribe el orden de la página en el menú..." />
+                </div>
+                <small class="form-text text-muted">Este es el orden en que se mostrará la página en el menú <?php echo $options->page_name;?>.</small>
             </div>
             <br/>
             <textarea name="content" data-provide="markdown" rows="10"><?php echo file_get_contents('app/data/md/'.$pagedata->id.'.md');?></textarea>
@@ -29,7 +38,7 @@
                 <input name="is_published" <?php if ($pagedata->is_published == 'on'):?> checked <?php endif;?> type="checkbox"> ¿Publicada?
             </label>
             <small class="form-text text-muted"> Si no chequeas esta opción, la página no se mostrará al público, pero tú la podrás ver en la vista de administrador.</small>
-            <hr/>
-            <input type="submit" class="btn btn-success" value="Actualizar">
+            <hr>
+            <input type="submit" class="btn btn-success" id="submitBtn" value="Actualizar">
         </form>
 </section>

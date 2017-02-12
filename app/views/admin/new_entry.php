@@ -19,6 +19,7 @@
             <div class="form-group">
                 <div class="input-group">
                     <span class="input-group-addon"><strong>Slug: </strong></span>
+                    <span class="input-group-addon"><?php echo base_url();?>home/entry/</span>
                     <input name="slug" class="form-control" type="text" placeholder="Escribe el slug de tu entrada..." />
                 </div>
                 <small class="form-text text-muted">El slug es el identificador de la url de tu entrada.</small>
@@ -30,6 +31,6 @@
             </label>
             <small class="form-text text-muted"> Si no chequeas esta opción, la entrada no se mostrará al público, pero tú la podrás ver en la vista de administrador.</small>
             <hr/>
-            <input type="submit" class="btn btn-success" value="Guardar">
+            <input type="submit" id="submitBtn" class="btn btn-success" value="Guardar">
         </form>
 </section>

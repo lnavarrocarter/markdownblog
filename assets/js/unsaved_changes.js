@@ -6,9 +6,13 @@ $(":input").change(function(){ //trigers change in all input fields including te
     unsaved = true;
 });
 
-$("form").on('submit',function(){
-	var unsaved = false;
-	return true;
+$("#submitBtn").click(function(){
+	unsaved = false;
+});
+
+$("#modalCancel").click(function(){
+    $('form').get(0).reset();
+    unsaved = false;
 });
 
 function unloadPage(){ 
@@ -18,3 +22,4 @@ function unloadPage(){
 }
 
 window.onbeforeunload = unloadPage;
+

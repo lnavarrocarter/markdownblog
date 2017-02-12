@@ -7,7 +7,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="<?php echo base_url();?>"><img class="hidden-lg hidden-md" src="<?php echo base_url();?>assets/img/logo_top.png" class="img-responsive" alt="<?php echo $sitedata->options->site_name;?> - <?php echo $sitedata->options->site_motto;?>"> <span class="hidden-xs hidden-sm"><?php echo $sitedata->options->site_name;?></span></a>
+      <a class="navbar-brand" href="<?php echo base_url();?>"><img class="hidden-lg hidden-md" src="<?php echo base_url();?>assets/img/logo_top.png" class="img-responsive" alt="<?php echo $options->site_name;?> - <?php echo $options->site_motto;?>"> <span class="hidden-xs hidden-sm"><?php echo $options->site_name;?></span></a>
     </div>
     <div class="navbar-collapse collapse">
       <ul class="nav navbar-nav navbar-right">
@@ -16,10 +16,10 @@
         </li>
         <!-- INICIO: Menú Página -->
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle js-activated" data-toggle="dropdown"><?php echo $sitedata->options->page_name;?> <i class="ion-ios7-arrow-down"></i></a>
+          <a href="#" class="dropdown-toggle js-activated" data-toggle="dropdown"><?php echo $options->page_name;?> <i class="fa fa-chevron-down fa-fw"></i></a>
           <ul class="dropdown-menu">
-          <?php foreach ($sitedata->pages as $page):?>
-            <li><a href="<?php echo base_url();?>home/page/<?php echo $page->slug;?>"><?php echo $page->title;?></a></li>
+          <?php foreach ($pages as $page):?>
+            <li><a href="<?php echo base_url();?>home/page/<?php echo $page['slug'];?>"><?php echo $page['title'];?></a></li>
           <?php endforeach;?>
           </ul>
         <!-- FIN: Menú Página -->
@@ -31,7 +31,7 @@
           <a href="/donate">Donar</a>
         </li>
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle js-activated" data-toggle="dropdown">Administrar <i class="ion-ios7-arrow-down"></i></a>
+          <a href="#" class="dropdown-toggle js-activated" data-toggle="dropdown">Administrar <i class="fa fa-chevron-down fa-fw"></i></a>
           <ul class="dropdown-menu">
             <li><a href="<?php echo base_url();?>admin/settings">Ajustes </a></li>
             <li><a href="<?php echo base_url();?>admin/users">Usuarios </a></li>
@@ -39,6 +39,9 @@
             <li><a href="<?php echo base_url();?>admin/entries">Entradas </a></li>
             <li><a href="<?php echo base_url();?>admin/sliders">Sliders </a></li>
           </ul>
+        </li>
+        <li data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Reporta un problema en GitHub" class="dropdown">
+          <a href="https://github.com/mnavarrocarter/markdownblog/issues" target="_blank"><i class="fa fa-bug fa-fw"></i></a>
         </li>
       </ul>
     </div>

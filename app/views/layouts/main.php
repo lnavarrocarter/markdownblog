@@ -4,7 +4,7 @@
   <meta http-equiv='Content-Type' content='text/html; charset=utf-8'>
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title><?php echo $sitedata->options->site_name;?> - <?php echo $title;?></title>
+  <title><?php echo $options->site_name;?> - <?php echo $title;?></title>
   <meta name="author" content="Matías Navarro">
 
   <meta name="description" content="Este es el sitio personal de Matías Navarro Carter, desarrollador web freelance. Aquí Matías escribe y comparte cursos, código y opiniones sobre nuevas tecnologías. Además de eso, muestra su trabajo.">
@@ -16,7 +16,7 @@
   <meta property="og:site_name" content="NC.com - <?php echo $title;?>" />
   <meta property="og:locale" content="es_CL" />
   <link href="<?php echo base_url();?>assets/css/bootstrap.min.css" rel="stylesheet">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/1.4.1/css/ionicons.css" rel="stylesheet">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
   <link href="<?php echo base_url();?>assets/css/style.css" rel="stylesheet">
   <link href="<?php echo base_url();?>assets/css/flexslider.css" rel="stylesheet">
   <link href="<?php echo base_url();?>assets/css/bootstrap-markdown.min.css" rel="stylesheet">

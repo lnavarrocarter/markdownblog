@@ -65,32 +65,53 @@ class Jsondb {
      */
 	public function get($table, $field = false, $value = false, $sortfield = false) {
 		$query = $this->decode(true);
+		$result = array();
+		// Primero veo si tengo que obtener todos los datos o sólo los que ven una condición
 		if($field && $value) {
-			$result = array();
 			foreach ($query[$table] as $item) {
 				if($item[$field] == $value) {
 					$result[] = $item;
-				} else {
-					continue;
 				}
-	        } 
-	        if ($sortfield) {
-	        	foreach ($result as $key => $row) {
-				    $thesort[$key]  = $row[$sortfield];
-				}    
-	        	array_multisort($thesort, SORT_ASC, $result);
-	        }
-	        return (object) $result;
-		} else {
-			// Me traigo todos los valores de la tabla completa
-			return (object) $query[$table];
-		}
-		
+	        }  
+	    } else {
+	    	$result = $query[$table];
+	    }
+		// Ordeno el result si hay campo. Si no, simplemente devuelvo.
+		if ($sortfield) {
+        	foreach ($result as $key => $row) {
+			    $thesort[$key]  = $row[$sortfield];
+			}    
+        	array_multisort($thesort, SORT_ASC, $result);
+        	return (object) $result;
+        } else {
+        	return (object) $result;
+        } 
 	}
 
-	// Actualiza una entrada
-	public function update() {
+	public function get_one($table, $field, $value) {
+		$query = $this->decode();
+		foreach ($query->$table as $item) {
+			if($item->$field == $value) {
+				 return $item;
+			}
+        } 
+	}
 
+	// Actualiza una entrada cuyo campo especificado matchea un valor con un array de datos
+	public function update($table, $field, $value, $array) {
+		$query = $this->decode(true);
+		foreach ($query[$table] as $key => $val) {
+			if ($val[$field] == $value) {
+				$query[$table][$key] = array_replace($query[$table][$key], $array);	
+			}
+		}
+		$this->encode($query);
+	}
+
+	public function update_options($data) {
+		$query = $this->decode(true);
+		$query['options'] = array_replace($query['options'], $data);
+		$this->encode($query);
 	}
 
 	// Borra una entrada cuyo campo específicado matchea un valor
@@ -104,7 +125,7 @@ class Jsondb {
 		$this->encode($query);
 	}
 
-	// Crea una entrada con un id único
+	// Inserta una entrada (array de datos) en una tabla específico, le da un id único y devuelve ese id
 	public function create($table, $data) {
 		$query = $this->decode(true);
 		$dbdata['id'] = uniqid();
@@ -113,6 +134,7 @@ class Jsondb {
 		}
 		array_push($query[$table], $dbdata);
 		$this->encode($query);
+		return $dbdata['id'];
 	}
 
 }

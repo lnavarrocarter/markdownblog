@@ -19,7 +19,10 @@ class Admin extends CI_Controller {
     // La vista que lista los sliders
     public function sliders(){
 		// Ir a buscar los datos
-        $sitedata = $this->Data_model->get_all_data();
+        $options = $this->Data_model->get_options();
+        $pages = $this->Data_model->get_published_pages();
+        $entries = $this->Data_model->get_published_entries();
+        $socials = $this->jsondb->get('socials');
         $sliderdata = $this->Data_model->get_sliders();
 		// Título de la Página
 		$data['title'] = 'Administrar Sliders';
@@ -32,13 +35,16 @@ class Admin extends CI_Controller {
 		// ¿Footer?
 		$data['footer'] = true;
 		// Breadcrumbs
-		$this->breadcrumbs->unshift('<i class="ion-home"></i> Inicio', '/');
+		$this->breadcrumbs->unshift('<i class="fa fa-home fa-fw"></i> Inicio', '/');
 		$this->breadcrumbs->push('Administrar', '#');
 		$this->breadcrumbs->push('Sliders', '/admin/sliders/', true);
 		$data['breadcrumb'] = $this->breadcrumbs->show();
         // Cargar la vista
+        $data['options'] = $options;
+        $data['pages'] = $pages;
+        $data['entries'] = $entries;
+        $data['socials'] = $socials;
         $data['sliderdata'] = $sliderdata;
-        $data['sitedata'] = $sitedata;
 		$this->load->view('layouts/main', $data);
 	}
 
@@ -68,7 +74,10 @@ class Admin extends CI_Controller {
 	// La vista que lista las páginas
 	public function pages(){
 		// Ir a buscar los datos
-        $sitedata = $this->Data_model->get_all_data();
+        $options = $this->Data_model->get_options();
+        $pages = $this->Data_model->get_published_pages();
+        $entries = $this->Data_model->get_published_entries();
+        $socials = $this->jsondb->get('socials');
         $pagedata = $this->Data_model->get_pages();
 		// Título de la Página
 		$data['title'] = 'Administrar Páginas';
@@ -81,20 +90,28 @@ class Admin extends CI_Controller {
 		// ¿Footer?
 		$data['footer'] = true;
 		// Breadcrumbs
-		$this->breadcrumbs->unshift('<i class="ion-home"></i> Inicio', '/');
+		$this->breadcrumbs->unshift('<i class="fa fa-home fa-fw"></i> Inicio', '/');
 		$this->breadcrumbs->push('Administrar', '#');
 		$this->breadcrumbs->push('Páginas', '/admin/pages/', true);
 		$data['breadcrumb'] = $this->breadcrumbs->show();
+		// Obtener el lastest release de GitHub
+		$data['latest'] = $this->tools->get_latest_release();
         // Cargar la vista
+        $data['options'] = $options;
+        $data['pages'] = $pages;
+        $data['entries'] = $entries;
+        $data['socials'] = $socials;
         $data['pagedata'] = $pagedata;
-        $data['sitedata'] = $sitedata;
 		$this->load->view('layouts/main', $data);
 	}
 
 	// La vista para crear la página
 	public function create_page() {
 		// Ir a buscar los datos
-        $sitedata = $this->Data_model->get_all_data();
+        $options = $this->Data_model->get_options();
+        $pages = $this->Data_model->get_published_pages();
+        $entries = $this->Data_model->get_published_entries();
+        $socials = $this->jsondb->get('socials');
 		// Título de la Página
 		$data['title'] = 'Nueva Página';
 		// Vista principal a cargar
@@ -106,13 +123,16 @@ class Admin extends CI_Controller {
 		// ¿Footer?
 		$data['footer'] = true;
 		// Breadcrumbs
-		$this->breadcrumbs->unshift('<i class="ion-home"></i> Inicio', '/');
+		$this->breadcrumbs->unshift('<i class="fa fa-home fa-fw"></i> Inicio', '/');
 		$this->breadcrumbs->push('Administrar', '#');
 		$this->breadcrumbs->push('Páginas', '/admin/pages/', true);
 		$this->breadcrumbs->push('Nueva Página', '/admin/create_page/', true);
 		$data['breadcrumb'] = $this->breadcrumbs->show();
         // Cargar la vista
-        $data['sitedata'] = $sitedata;
+        $data['options'] = $options;
+        $data['pages'] = $pages;
+        $data['entries'] = $entries;
+        $data['socials'] = $socials;
 		$this->load->view('layouts/main', $data);
 	}
 
@@ -130,10 +150,13 @@ class Admin extends CI_Controller {
 		redirect('admin/pages');
 	}
 
-	// La función que edita una página
+	// La vista para editar una página
 	public function edit_page($id) {
 		// Ir a buscar los datos
-        $sitedata = $this->Data_model->get_all_data();
+        $options = $this->Data_model->get_options();
+        $pages = $this->Data_model->get_published_pages();
+        $entries = $this->Data_model->get_published_entries();
+        $socials = $this->jsondb->get('socials');
         $pagedata = $this->Data_model->get_page_id($id);
 		// Título de la Página
 		$data['title'] = 'Editar Página';
@@ -146,13 +169,18 @@ class Admin extends CI_Controller {
 		// ¿Footer?
 		$data['footer'] = true;
 		// Breadcrumbs
-		$this->breadcrumbs->unshift('<i class="ion-home"></i> Inicio', '/');
+		$this->breadcrumbs->unshift('<i class="fa fa-home fa-fw"></i> Inicio', '/');
 		$this->breadcrumbs->push('Administrar', '#');
 		$this->breadcrumbs->push('Páginas', '/admin/pages/', true);
 		$this->breadcrumbs->push('Editar Página', '/admin/edit_page/', true);
 		$data['breadcrumb'] = $this->breadcrumbs->show();
+		// Obtener el lastest release de GitHub
+		$data['latest'] = $this->tools->get_latest_release();
         // Cargar la vista
-        $data['sitedata'] = $sitedata;
+        $data['options'] = $options;
+        $data['pages'] = $pages;
+        $data['entries'] = $entries;
+        $data['socials'] = $socials;
         $data['pagedata'] = $pagedata;
 		$this->load->view('layouts/main', $data);
 	}
@@ -171,7 +199,10 @@ class Admin extends CI_Controller {
 	// La vista que lista las entradas
 	public function entries(){
 		// Ir a buscar los datos
-        $sitedata = $this->Data_model->get_all_data();
+        $options = $this->Data_model->get_options();
+        $pages = $this->Data_model->get_published_pages();
+        $entries = $this->Data_model->get_published_entries();
+        $socials = $this->jsondb->get('socials');
         $entriesdata = $this->Data_model->get_entries();
 		// Título de la Página
 		$data['title'] = 'Administrar Entradas';
@@ -184,20 +215,28 @@ class Admin extends CI_Controller {
 		// ¿Footer?
 		$data['footer'] = true;
 		// Breadcrumbs
-		$this->breadcrumbs->unshift('<i class="ion-home"></i> Inicio', '/');
+		$this->breadcrumbs->unshift('<i class="fa fa-home fa-fw"></i> Inicio', '/');
 		$this->breadcrumbs->push('Administrar', '#');
 		$this->breadcrumbs->push('Entradas', '/admin/entries/', true);
 		$data['breadcrumb'] = $this->breadcrumbs->show();
+		// Obtener el lastest release de GitHub
+		$data['latest'] = $this->tools->get_latest_release();
         // Cargar la vista
+        $data['options'] = $options;
+        $data['pages'] = $pages;
+        $data['entries'] = $entries;
+        $data['socials'] = $socials;
         $data['entriesdata'] = $entriesdata;
-        $data['sitedata'] = $sitedata;
 		$this->load->view('layouts/main', $data);
 	}
 
 	// La vista para crear la entrada
 	public function create_entry() {
 		// Ir a buscar los datos
-        $sitedata = $this->Data_model->get_all_data();
+        $options = $this->Data_model->get_options();
+        $pages = $this->Data_model->get_published_pages();
+        $entries = $this->Data_model->get_published_entries();
+        $socials = $this->jsondb->get('socials');
 		// Título de la Página
 		$data['title'] = 'Nueva Entrada';
 		// Vista principal a cargar
@@ -209,13 +248,18 @@ class Admin extends CI_Controller {
 		// ¿Footer?
 		$data['footer'] = true;
 		// Breadcrumbs
-		$this->breadcrumbs->unshift('<i class="ion-home"></i> Inicio', '/');
+		$this->breadcrumbs->unshift('<i class="fa fa-home fa-fw"></i> Inicio', '/');
 		$this->breadcrumbs->push('Administrar', '#');
 		$this->breadcrumbs->push('Entradas', '/admin/entries/', true);
 		$this->breadcrumbs->push('Nueva Entrada', '/admin/create_entry/', true);
 		$data['breadcrumb'] = $this->breadcrumbs->show();
+		// Obtener el lastest release de GitHub
+		$data['latest'] = $this->tools->get_latest_release();
         // Cargar la vista
-        $data['sitedata'] = $sitedata;
+        $data['options'] = $options;
+        $data['pages'] = $pages;
+        $data['entries'] = $entries;
+        $data['socials'] = $socials;
 		$this->load->view('layouts/main', $data);
 	}
 
@@ -233,10 +277,13 @@ class Admin extends CI_Controller {
 		redirect('admin/entries');
 	}
 
-	// La función que edita una entrada
+	// La vista que edita una entrada
 	public function edit_entry($id) {
 		// Ir a buscar los datos
-        $sitedata = $this->Data_model->get_all_data();
+        $options = $this->Data_model->get_options();
+        $pages = $this->Data_model->get_published_pages();
+        $entries = $this->Data_model->get_published_entries();
+        $socials = $this->jsondb->get('socials');
         $entrydata = $this->Data_model->get_entry_id($id);
 		// Título de la Página
 		$data['title'] = 'Editar Entrada';
@@ -249,13 +296,18 @@ class Admin extends CI_Controller {
 		// ¿Footer?
 		$data['footer'] = true;
 		// Breadcrumbs
-		$this->breadcrumbs->unshift('<i class="ion-home"></i> Inicio', '/');
+		$this->breadcrumbs->unshift('<i class="fa fa-home fa-fw"></i> Inicio', '/');
 		$this->breadcrumbs->push('Administrar', '#');
 		$this->breadcrumbs->push('Entradas', '/admin/entries/', true);
 		$this->breadcrumbs->push('Editar Entrada', '/admin/edit_entry/', true);
 		$data['breadcrumb'] = $this->breadcrumbs->show();
+		// Obtener el lastest release de GitHub
+		$data['latest'] = $this->tools->get_latest_release();
         // Cargar la vista
-        $data['sitedata'] = $sitedata;
+        $data['options'] = $options;
+        $data['pages'] = $pages;
+        $data['entries'] = $entries;
+        $data['socials'] = $socials;
         $data['entrydata'] = $entrydata;
 		$this->load->view('layouts/main', $data);
 	}
@@ -272,9 +324,12 @@ class Admin extends CI_Controller {
 	####################################
 
 	// La vista que muestra las opciones
-	public function settings(){
+	public function settings() {
 		// Ir a buscar los datos
-        $sitedata = $this->Data_model->get_all_data();
+        $options = $this->Data_model->get_options();
+        $pages = $this->Data_model->get_published_pages();
+        $entries = $this->Data_model->get_published_entries();
+        $socials = $this->jsondb->get('socials');
 		// Título de la Página
 		$data['title'] = 'Ajustes';
 		// Vista principal a cargar
@@ -286,13 +341,30 @@ class Admin extends CI_Controller {
 		// ¿Footer?
 		$data['footer'] = true;
 		// Breadcrumbs
-		$this->breadcrumbs->unshift('<i class="ion-home"></i> Inicio', '/');
+		$this->breadcrumbs->unshift('<i class="fa fa-home fa-fw"></i> Inicio', '/');
 		$this->breadcrumbs->push('Administrar', '#');
 		$this->breadcrumbs->push('Ajustes', '/admin/ajustes/', true);
 		$data['breadcrumb'] = $this->breadcrumbs->show();
+		// Obtener el lastest release de GitHub
+		$data['latest'] = $this->tools->get_latest_release();
         // Cargar la vista
-        $data['sitedata'] = $sitedata;
+        $data['options'] = $options;
+        $data['pages'] = $pages;
+        $data['entries'] = $entries;
+        $data['socials'] = $socials;
 		$this->load->view('layouts/main', $data);
+	}
+
+	// La función que guarda las opciones
+	public function save_settings() {
+		$data = array();
+		foreach ($_POST as $key => $val){
+			$data[htmlspecialchars($key)] = htmlspecialchars($val); 
+		}
+		$this->Data_model->update_options($data);
+
+		$this->session->set_flashdata('success', 'Tus ajustes se han guardado existosamente.');
+		redirect ('admin/settings');
 	}
 
 }

@@ -30,4 +30,30 @@ class Tools {
 	    if (!$full) $string = array_slice($string, 0, 1);
 	    return $string ? 'hace '. implode(', ', $string) : 'justo ahora';
 	}
+
+	public function save_latest_release() {
+		$url = 'https://api.github.com/repos/mnavarrocarter/markdownblog/releases/latest';
+		// Get cURL resource
+		$curl = curl_init();
+		// Set some options - we are passing in a useragent too here
+		curl_setopt_array($curl, array(
+		    CURLOPT_RETURNTRANSFER => 1,
+		    CURLOPT_URL => $url,
+		    CURLOPT_USERAGENT => 'Request for Latest Release',
+		    CURLOPT_SSL_VERIFYPEER => false
+		));
+		//
+		$error = curl_error($curl);
+		// Send the request & save response to $resp
+		$resp = curl_exec($curl);
+		// Close request to clear up some resources
+		curl_close($curl);
+		file_put_contents('app/data/latest.json', $resp);
+	}
+
+	public function get_latest_release() {
+		$json = file_get_contents('app/data/latest.json',0,null,null);
+		$data = json_decode($json);
+		return $data;
+	}
 }

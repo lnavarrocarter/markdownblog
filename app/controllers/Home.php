@@ -9,10 +9,16 @@ class Home extends CI_Controller {
     }
 
 	public function index() {
+		// Guardar el último release de GitHub
+		$this->tools->save_latest_release();
 		// Ejecutar Modelo y ponerlo en variable
-        $sitedata = $this->Data_model->get_all_data();
+        $options = $this->Data_model->get_options();
+        $pages = $this->Data_model->get_published_pages();
+        $entries = $this->Data_model->get_published_entries();
+        $slidersdata = $this->Data_model->get_published_sliders();
+        $socials = $this->jsondb->get('socials');
 		// Título de la Página
-		$data['title'] = $sitedata->options->site_motto;
+		$data['title'] = $options->site_motto;
 		// Vista principal a cargar
 		$data['main_content'] = 'home';
 		// ¿Navbar?
@@ -21,14 +27,24 @@ class Home extends CI_Controller {
 		$data['pagetitle'] = false;
 		// ¿Footer?
 		$data['footer'] = true;
+		// Obtener el lastest release de GitHub
+		$data['latest'] = $this->tools->get_latest_release();
         // Cargar la vista
-        $data['sitedata'] = $sitedata;
+        $data['options'] = $options;
+        $data['pages'] = $pages;
+        $data['entries'] = $entries;
+        $data['socials'] = $socials; 
+        $data['slidersdata'] = $slidersdata;
 		$this->load->view('layouts/main', $data);
 	}
 
 	public function page($slug){
-		// Ir a buscar los datos
-        $sitedata = $this->Data_model->get_all_data();
+		// Ir a buscar los datos del layout
+        $options = $this->Data_model->get_options();
+        $pages = $this->Data_model->get_published_pages();
+        $entries = $this->Data_model->get_published_entries();
+        $socials = $this->jsondb->get('socials');
+        // Ir a buscar los datos específicos de la página
         $pagedata = $this->Data_model->get_page_slug($slug);
 		// Título de la Página
 		$data['title'] = $pagedata->title;
@@ -41,23 +57,25 @@ class Home extends CI_Controller {
 		// ¿Footer?
 		$data['footer'] = true;
 		// Breadcrumbs
-		$this->breadcrumbs->unshift('<i class="ion-home"></i> Inicio', '/');
+		$this->breadcrumbs->unshift('<i class="fa fa-home fa-fw"></i> Inicio', '/');
 		$this->breadcrumbs->push('Proyectos', '#');
 		$this->breadcrumbs->push($pagedata->title, '/home/page/'.$pagedata->slug, true);
 		$data['breadcrumb'] = $this->breadcrumbs->show();
 		// Pasar markdown y el parsedown
 		$data['parsedown'] = new ParsedownExtra();
 		$data['mdfile'] = $pagedata->id;
-        // Cargar la vista
+		// Obtener el lastest release de GitHub
+		$data['latest'] = $this->tools->get_latest_release();
+        // Cargar la vista y mandar la data
+        $data['options'] = $options;
+        $data['pages'] = $pages;
+        $data['entries'] = $entries;
+        $data['socials'] = $socials;
         $data['pagedata'] = $pagedata;
-        $data['sitedata'] = $sitedata;
 		$this->load->view('layouts/main', $data);
 	}
 
 	public function test() {
-		$query = $this->jsondb->create('entries',array('name' => 'Jose Pedro','slug' => 'nolose'));
-		echo '<pre>';
-		print_r($query);
-		exit;
+		
 	}
 }

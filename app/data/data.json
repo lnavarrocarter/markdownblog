@@ -14,21 +14,24 @@
             "slug": "about",
             "title": "Acerca de",
             "date": 1486646518,
-            "is_published": "on"
+            "is_published": "on",
+            "order": "1"
         },
         "2": {
             "id": "589ca0a0d5a04",
             "slug": "mapadesarrollo",
             "title": "Mapa de Desarrollo",
             "date": 1486659744,
-            "is_published": "on"
+            "is_published": "on",
+            "order": "2"
         },
         "3": {
             "id": "589eb3ed43b09",
             "slug": "jsondb",
             "title": "JsonDB",
             "date": 1486795757,
-            "is_published": "on"
+            "is_published": "on",
+            "order": "3"
         }
     },
     "entries": {
@@ -37,7 +40,7 @@
             "slug": "holanda",
             "title": "Entrada de Prueba",
             "date": 1486653433,
-            "is_published": "off"
+            "is_published": "on"
         },
         "2": {
             "id": "589c8af6bbaf4",
@@ -52,20 +55,6 @@
             "title": "Aprovechando tu EasyWeb",
             "date": 1486659853,
             "is_published": "on"
-        },
-        "4": {
-            "id": "589e0ec0d3b1d",
-            "slug": "caca",
-            "title": "Caca",
-            "date": 1486753472,
-            "is_published": "on"
-        },
-        "5": {
-            "id": "589ed3ee37103",
-            "slug": "juantio",
-            "title": "hola",
-            "date": 1486803950,
-            "is_published": "on"
         }
     },
     "sliders": {
@@ -75,14 +64,7 @@
             "lead": "Conoce The Markdown Blog, la plataforma de blogging m\u00e1s r\u00e1pida, liviana y vers\u00e1til del mercado.",
             "btn_text": "Ver el C\u00f3digo",
             "btn_link": "https:\/\/github.com\/mnavarrocarter\/markdownblog",
-            "order": "2"
-        },
-        "2": {
-            "id": "589df93c01f98",
-            "title": "\u00a1Conoce la Velocidad!",
-            "lead": "MarkdownBlog es lo m\u00e1s r\u00e1pido que hay.",
-            "btn_text": "Saber M\u00e1s",
-            "btn_link": "http:\/\/caca",
+            "is_published": "on",
             "order": "1"
         }
     },
@@ -113,11 +95,11 @@
         "site_motto": "La plataforma de publicaci\u00f3n r\u00e1pida y f\u00e1cil de usar",
         "site_url": "http:\/\/themarkdownblog.dev\/",
         "posts_show_blog": 5,
-        "posts_show_footer": 10,
+        "posts_show_footer": "10",
         "page_name": "Informaci\u00f3n",
         "home_slider": true,
-        "footer_copy_text": "&copy; 2017 Mat\u00edas Navarro Carter. Todos los derechos reservados.",
+        "footer_copy_text": "\u00a9 2017 Mat\u00edas Navarro Carter. Todos los derechos reservados.",
         "footer_description_title": "Mat\u00edas Navarro Carter",
-        "footer_description_content": "Mat\u00edas es un desarrollador web freelance chileno que, junto a su hermano, fund\u00f3 su propia compa\u00f1\u00eda de desarrollo llamada <a href=\"https:\/\/ncai.cl\" target=\"_blank\">Ncai SpA<\/a>. En su tiempo libre, Mat\u00edas gusta de desarrollar diversas aplicaciones y descubrir nuevas tecnolog\u00edas. Vive en Santiago de Chile junto a su esposa Briony, originaria de Irlanda del Norte, con la cual est\u00e1 casado desde Julio de 2017."
+        "footer_description_content": "Mat\u00edas es un desarrollador web freelance chileno que, junto a su hermano, fund\u00f3 su propia compa\u00f1\u00eda de desarrollo llamada &lt;a href=&quot;https:\/\/ncai.cl&quot; target=&quot;_blank&quot;&gt;Ncai SpA&lt;\/a&gt;. En su tiempo libre, Mat\u00edas gusta de desarrollar diversas aplicaciones y descubrir nuevas tecnolog\u00edas. Vive en Santiago de Chile junto a su esposa Briony, originaria de Irlanda del Norte, con la cual est\u00e1 casado desde Julio de 2017."
     }
 }
