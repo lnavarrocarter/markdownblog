@@ -25,11 +25,12 @@
         <!-- FIN: Menú Página -->
         </li>
         <li class="dropdown">
-          <a href="<?php echo base_url();?>home/test">Test</a>
+          <a href="<?php echo base_url();?>auth/create_user_action/hola">Test</a>
         </li>
         <li class="dropdown">
           <a href="/donate">Donar</a>
         </li>
+        <?php if($this->session->logged_in):?>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle js-activated" data-toggle="dropdown">Administrar <i class="fa fa-chevron-down fa-fw"></i></a>
           <ul class="dropdown-menu">
@@ -38,8 +39,14 @@
             <li><a href="<?php echo base_url();?>admin/pages">Páginas </a></li>
             <li><a href="<?php echo base_url();?>admin/entries">Entradas </a></li>
             <li><a href="<?php echo base_url();?>admin/sliders">Sliders </a></li>
+            <li><a href="<?php echo base_url();?>auth/logout">Cerrar Sesión </a></li>
           </ul>
         </li>
+        <?php else:?>
+          <li class="dropdown">
+          <a href="<?php echo base_url();?>auth/login">Login</a>
+        </li>
+        <?php endif;?>
         <li data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Reporta un problema en GitHub" class="dropdown">
           <a href="https://github.com/mnavarrocarter/markdownblog/issues" target="_blank"><i class="fa fa-bug fa-fw"></i></a>
         </li>

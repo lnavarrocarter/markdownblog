@@ -5,10 +5,10 @@ class Admin extends CI_Controller {
 
 	function __construct() {
         parent::__construct();
-        /* Verifica si hay sesión inciada
-        if(!$_SESSION['active']){
+        // Verifica si hay sesión inciada
+        if(!$_SESSION['logged_in']){
         	redirect('error/404');
-        }*/
+        }
         $this->load->model('Data_model');
     }
 
@@ -39,6 +39,8 @@ class Admin extends CI_Controller {
 		$this->breadcrumbs->push('Administrar', '#');
 		$this->breadcrumbs->push('Sliders', '/admin/sliders/', true);
 		$data['breadcrumb'] = $this->breadcrumbs->show();
+		// Obtener el lastest release de GitHub
+		$data['latest'] = $this->tools->get_latest_release();
         // Cargar la vista
         $data['options'] = $options;
         $data['pages'] = $pages;

@@ -36,8 +36,9 @@
 <!-- FIN: Navbar -->
 <?php endif;?>
 
-<?php if($footer):?>
 <?php $this->load->view($main_content);?>
+
+<?php if($footer):?>
 <!-- INICIO: Footer -->
 <?php $this->load->view('layouts/footer');?>
 <!-- FIN: Footer -->
@@ -54,6 +55,7 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"></script>
 <script src="<?php echo base_url();?>assets/js/unsaved_changes.js" type="text/javascript"></script>
 <script src="<?php echo base_url();?>assets/js/app.js" type="text/javascript"></script>
+<script src='https://www.google.com/recaptcha/api.js'></script>
 <script>hljs.initHighlightingOnLoad();</script>
 </body>
 </html>

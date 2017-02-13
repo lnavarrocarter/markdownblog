@@ -1117,3 +1117,34 @@ input[type="color"]:focus,
 .navbar-brand {
     line-height: 35px;
 }
+
+.panel {
+    transition: 0.5s;
+}
+
+.panel:hover {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.panel-primary {
+  border-color: #333377;
+}
+.panel-primary > .panel-heading {
+  color: #ffffff;
+  background-color: #333377;
+  border-color: #333377;
+}
+.panel-primary > .panel-heading + .panel-collapse > .panel-body {
+  border-top-color: #333377;
+}
+.panel-primary > .panel-heading .badge {
+  color: #333377;
+  background-color: #ffffff;
+}
+.panel-primary > .panel-footer + .panel-collapse > .panel-body {
+  border-bottom-color: #333377;
+}
+
+.g-recaptcha {
+    display: inline-block;
+}
