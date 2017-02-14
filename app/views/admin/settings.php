@@ -12,8 +12,8 @@
             <div class="col-md-4">
                 <ul class="nav nav-pills nav-stacked">
                     <li class="active"><a data-toggle="pill" href="#general">Ajustes Generales</a></li>
+                    <li><a data-toggle="pill" href="#security">Seguridad</a></li>
                     <li><a data-toggle="pill" href="#sections">Ajustes de Secciones</a></li>
-                    <li><a data-toggle="pill" href="#social">Links Sociales</a></li>
                     <li><a data-toggle="pill" href="#others">Otros Ajustes</a></li>
                 </ul>
                 <br/>
@@ -92,11 +92,42 @@
                         <h1>Ajustes de Secciones <small>Configura las diferentes secciones disponibles.</small></h1>
                     </div>
                     <!-- FIN: Ajustes de Secciones -->
-                    <!-- INICIO: Links Sociales -->
-                    <div class="tab-pane fade" id="social">
-                        <h1>Links Sociales <small>Configura tus enlaces a las redes sociales.</small></h1>
+                    <!-- INICIO: Seguridad -->
+                    <div class="tab-pane fade" id="security">
+                        <h1>Seguridad <small>Opciones que te ayudarán a manejar la seguridad de tu sitio.</small></h1>
+                        <hr>
+                        <h3>Google reCaptcha</h3>
+                        <!-- GOOGLE RECAPTCHA SITE -->
+                        <div class="form-group">
+                            <div class="input-group">
+                                <span class="input-group-addon"><strong>Site Key: </strong></span>
+                                <input name="grecaptcha_site" class="form-control" type="text" value="<?php echo $options->grecaptcha_site;?>" placeholder="Escribe el site key de tu Google reCaptcha..." />
+                            </div>
+                            <small class="form-text text-muted">El site key es una clave pública que tu sitio utiliza para validar un usuario humano. Puedes obtener una <a href="https://www.google.com/recaptcha/admin" target="_blank">aquí.</a></small>
+                        </div>
+                        <!-- GOOGLE RECAPTCHA SECRET -->
+                        <div class="form-group">
+                            <div class="input-group">
+                                <span class="input-group-addon"><strong>Secret Key: </strong></span>
+                                <input name="grecaptcha_secret" class="form-control" type="text" value="<?php echo $options->grecaptcha_secret;?>" placeholder="Escribe el site secret de tu Google reCaptcha..." />
+                            </div>
+                            <small class="form-text text-muted">El secret key es una clave secreta que tu sitio utiliza para preguntar a los servidores de google si un usuario ha sido validado. Puedes obtener una <a href="https://www.google.com/recaptcha/admin" target="_blank">aquí.</a></small>
+                        </div>
+                        <hr>
+                        <h3>Login & Registro</h3>
+                        <!-- MOSTRAR ENLACE DE LOGIN -->
+                        <div class="form-group">
+                            <div class="input-group">
+                                <span class="input-group-addon"><strong>¿Mostrar el enlace de inicio de sesión en el menú? </strong></span>
+                                <select name="show_login_on_menu" class="form-control" value="<?php echo $options->show_login_on_menu;?>" placeholder="Selecciona...">
+                                    <option <?php if ($options->show_login_on_menu == 'true'):?> selected <?php endif;?> value="true">Sí</option>
+                                    <option <?php if ($options->show_login_on_menu == 'false'):?> selected <?php endif;?> value="false">No</option>
+                                </select>
+                            </div>
+                            <small class="form-text text-muted">Si eliges no mostrar el enlace de login, tendrás que acceder a la pantalla de inicio de sesión escribiendo la url (<?php echo base_url();?>auth/login).</small>
+                        </div>
                     </div>
-                    <!-- FIN: Links Sociales -->
+                    <!-- FIN: Seguridad -->
                     <!-- INICIO: Otros Ajustes -->
                     <div class="tab-pane fade" id="others">
                         <h1>Otros Ajustes <small>Otros ajustes de menor importancia.</small></h1>

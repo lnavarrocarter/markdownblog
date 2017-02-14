@@ -61,8 +61,8 @@ class Home extends CI_Controller {
 		$this->breadcrumbs->push('Proyectos', '#');
 		$this->breadcrumbs->push($pagedata->title, '/home/page/'.$pagedata->slug, true);
 		$data['breadcrumb'] = $this->breadcrumbs->show();
-		// Pasar markdown y el parsedown
-		$data['parsedown'] = new ParsedownExtra();
+		// Pasar markdown y el Cebe Markdown
+		$data['parsedown'] = new Parsedown();
 		$data['mdfile'] = $pagedata->id;
 		// Obtener el lastest release de GitHub
 		$data['latest'] = $this->tools->get_latest_release();

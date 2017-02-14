@@ -130,6 +130,8 @@ class Admin extends CI_Controller {
 		$this->breadcrumbs->push('Páginas', '/admin/pages/', true);
 		$this->breadcrumbs->push('Nueva Página', '/admin/create_page/', true);
 		$data['breadcrumb'] = $this->breadcrumbs->show();
+		// Obtener el lastest release de GitHub
+		$data['latest'] = $this->tools->get_latest_release();
         // Cargar la vista
         $data['options'] = $options;
         $data['pages'] = $pages;
@@ -367,6 +369,70 @@ class Admin extends CI_Controller {
 
 		$this->session->set_flashdata('success', 'Tus ajustes se han guardado existosamente.');
 		redirect ('admin/settings');
+	}
+
+	#########################################
+	# FUNCIONES RELACIONADAS A LOS USUARIOS #
+	#########################################
+
+	// Carga la vista que lista los usuarios
+	public function users() {
+		// Ir a buscar los datos
+        $options = $this->Data_model->get_options();
+        $pages = $this->Data_model->get_published_pages();
+        $entries = $this->Data_model->get_published_entries();
+        $socials = $this->jsondb->get('socials');
+        $usersdata = $this->Data_model->get_users();
+		// Título de la Página
+		$data['title'] = 'Administrar Usuarios';
+		// Vista principal a cargar
+		$data['main_content'] = 'admin/users';
+		// ¿Navbar?
+		$data['navbar'] = true;
+		// ¿Barra de título?
+		$data['pagetitle'] = true;
+		// ¿Footer?
+		$data['footer'] = true;
+		// Breadcrumbs
+		$this->breadcrumbs->unshift('<i class="fa fa-home fa-fw"></i> Inicio', '/');
+		$this->breadcrumbs->push('Administrar', '#');
+		$this->breadcrumbs->push('Usuarios', '/admin/entries/', true);
+		$data['breadcrumb'] = $this->breadcrumbs->show();
+		// Obtener el lastest release de GitHub
+		$data['latest'] = $this->tools->get_latest_release();
+        // Cargar la vista
+        $data['options'] = $options;
+        $data['pages'] = $pages;
+        $data['entries'] = $entries;
+        $data['socials'] = $socials;
+        $data['usersdata'] = $usersdata;
+		$this->load->view('layouts/main', $data);
+	}
+
+	// Carga la vista de creación de usuario
+	public function new_user() {
+
+	}
+
+	// Carga la vista del perfil de usuario 
+	public function user() {
+
+	}
+
+	// Ejecuta la función que crea un usuario
+	public function create_user($data) {
+		$data = array(
+				'name' 			=> 'Matías Navarro',
+				'email' 		=> 'mnavarrocarter@gmail.com',
+				'passwd'		=> 'Servusdei@1988',
+				'is_admin'		=> true,
+				'created'		=> time(),
+				'lastlogin'		=> null,
+				'ipadd'			=> IP_ADDR,
+				'is_verified' 	=> true,
+				'is_active'		=> true
+			);
+		$this->Auth_model->create_user($data);
 	}
 
 }

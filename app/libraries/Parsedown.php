@@ -304,7 +304,7 @@ class Parsedown
             );
             if (isset($matches[1]))
             {
-                $class = 'language-'.$matches[1];
+                $class = $matches[1];
                 $Element['attributes'] = array(
                     'class' => $class,
                 );

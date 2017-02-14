@@ -7,7 +7,7 @@
             "passwd": "0c65be620bc30027b74dc8f4f77108cc8546651c",
             "is_admin": true,
             "created": 1486969050,
-            "lastlogin": 1486972553,
+            "lastlogin": 1487044499,
             "ipadd": "::1",
             "is_verified": true,
             "is_active": true,
@@ -21,7 +21,11 @@
             "title": "Acerca de",
             "date": 1486646518,
             "is_published": "on",
-            "order": "1"
+            "order": "1",
+            "relation" : {
+                "tabla": "38572305253",
+                "tabla": "2583523523"
+            }
         },
         "2": {
             "id": "589ca0a0d5a04",
@@ -36,7 +40,7 @@
             "slug": "jsondb",
             "title": "JsonDB",
             "date": 1486795757,
-            "is_published": "on",
+            "is_published": true,
             "order": "3"
         }
     },
@@ -107,7 +111,8 @@
         "footer_copy_text": "\u00a9 2017 Mat\u00edas Navarro Carter. Todos los derechos reservados.",
         "footer_description_title": "Mat\u00edas Navarro Carter",
         "footer_description_content": "Mat\u00edas es un desarrollador web freelance chileno que, junto a su hermano, fund\u00f3 su propia compa\u00f1\u00eda de desarrollo llamada &lt;a href=&quot;https:\/\/ncai.cl&quot; target=&quot;_blank&quot;&gt;Ncai SpA&lt;\/a&gt;. En su tiempo libre, Mat\u00edas gusta de desarrollar diversas aplicaciones y descubrir nuevas tecnolog\u00edas. Vive en Santiago de Chile junto a su esposa Briony, originaria de Irlanda del Norte, con la cual est\u00e1 casado desde Julio de 2017.",
-        "grecaptcha_site": "6LdlVhUUAAAAAGDOA8ZvzwrEhzkhUS0NxCU2S66f",
-        "grecaptcha_secret": "6LdlVhUUAAAAAD6TRLmMOuIVlOyMDRDZONVluQqt"
+        "grecaptcha_site": "",
+        "grecaptcha_secret": "",
+        "show_login_on_menu": "false"
     }
 }

@@ -21,12 +21,6 @@
 							<strong>¡Error!</strong> <?php echo $this->session->flashdata('error');?>
 						</div>
 						<?php endif;?>
-						<?php if(!$options->grecaptcha_site && !$options->grecaptcha_secret):?>
-					    <div class="alert alert-warning alert-dismissable">
-							<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-							<strong>¡Advertencia!</strong> No has configurado el servicio reCaptcha de Google. Tu sitio podría verse expuesto a ataques computacionales de fuerza bruta. Haz click <a href="https://www.google.com/recaptcha/admin" target="_blank">aquí</a> para obtener claves para tu servicio, y luego ingrésalas en Ajustes->Seguridad. 
-						</div>
-						<?php endif;?>
                         <br/>
                         <form action="<?php echo base_url();?>auth/login_action" method="post">
                             <div class="col-md-10 col-md-offset-1">

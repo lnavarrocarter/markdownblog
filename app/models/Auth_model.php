@@ -42,8 +42,8 @@ class Auth_model extends CI_Model {
 				);
 			$this->jsondb->update('users', 'id',$_SESSION['id'], $data);
 			// Mandamos el mensaje de éxito y redireccionamos
-			$this->session->set_flashdata('success', 'Bienvenido '.$_SESSION['name'].'. La última vez que iniciaste sesión fue el '.$_SESSION['lastlogin'].', desde '.$_SESSION['ipadd'].'');
-			redirect('admin/pages');
+			$this->session->set_flashdata('success', 'Bienvenido '.$_SESSION['name'].'. La última vez que iniciaste sesión fue el '.date('d/m/Y', $_SESSION['lastlogin']).' a las '.date('H:m:s', $_SESSION['lastlogin']).', desde '.$_SESSION['ipadd'].'');
+			redirect('admin/settings');
 		}
 	}
 

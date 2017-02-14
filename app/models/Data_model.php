@@ -31,8 +31,8 @@ class Data_model extends CI_Model {
 				'lead'			=> $this->input->post('lead'),
 				'btn_text'		=> $this->input->post('text'),
 				'btn_link'		=> $this->input->post('url'),
-				'is_published' => $this->input->post('is_published'),
-				'order'			=> $this->input->post('order')
+				'is_published' 	=> filter_var($this->input->post('is_published') , FILTER_VALIDATE_BOOLEAN),
+				'order'			=> filter_var($this->input->post('order') , FILTER_VALIDATE_BOOLEAN)
 			);
 		$this->jsondb->create('sliders', $data);
 	}
@@ -82,8 +82,8 @@ class Data_model extends CI_Model {
 				'slug'			=> $this->input->post('slug'),
 				'title'			=> $this->input->post('title'),
 				'date'			=> time(),
-				'order'			=> $this->input->post('order'),
-				'is_published'	=> $this->input->post('is_published')
+				'order'			=> filter_var($this->input->post('order') , FILTER_VALIDATE_BOOLEAN),
+				'is_published'	=> filter_var($this->input->post('is_published') , FILTER_VALIDATE_BOOLEAN)
 			);
 		
 		$id = $this->jsondb->create('pages', $data);
@@ -105,7 +105,7 @@ class Data_model extends CI_Model {
 		$data = array(
 				'slug'			=> $this->input->post('slug'),
 				'title'			=> $this->input->post('title'),
-				'is_published'	=> $this->input->post('is_published')
+				'is_published'	=> filter_var($this->input->post('is_published') , FILTER_VALIDATE_BOOLEAN)
 			);
 		
 		$this->jsondb->update('pages','id',$id, $data);
@@ -148,7 +148,7 @@ class Data_model extends CI_Model {
 				'slug'			=> $this->input->post('slug'),
 				'title'			=> $this->input->post('title'),
 				'date'			=> time(),
-				'is_published'	=> $this->input->post('is_published')
+				'is_published'	=> filter_var($this->input->post('is_published') , FILTER_VALIDATE_BOOLEAN)
 			);
 		$id = $this->jsondb->create('entries', $data);
 
@@ -191,5 +191,15 @@ class Data_model extends CI_Model {
 	public function update_options($data) {
 		$this->jsondb->update_options($data);
 	}
+
+	####################
+	# CRUD DE USUARIOS #
+	####################
+
+	// Obtiene un usuario
+	public function get_users() {
+		$query = $this->jsondb->get('users', false, false, 'created');
+		return $query;
+	} 
 	
 }

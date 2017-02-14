@@ -10,7 +10,7 @@
             <a class="btn btn-primary" href="<?php echo base_url();?>admin/create_entry"> Nueva Entrada </a>
             <hr>
         </div>
-        <table class="table">
+        <table class="table table-responsive">
             <thead>
                 <tr>
                     <th> # </th>
