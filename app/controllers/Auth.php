@@ -43,10 +43,10 @@ class Auth extends CI_Controller{
 			$this->session->set_flashdata('error', 'Hay problemas con algunos campos.');
 			redirect('auth/login');
 		// Comprobamos el recapcha
-		} elseif (!$this->tools->captcha_check($this->input->post('g-recaptcha-response'))) {
+		/*} elseif (!$this->tools->captcha_check($this->input->post('g-recaptcha-response'))) {
 			$this->session->set_flashdata('error', 'Hay problemas con el captcha.');
 			redirect('auth/login');
-		// Si la validación pasa, entonces ejecutamos el modal
+		// Si la validación pasa, entonces ejecutamos el modal*/
 		} else {
 			// Ponemos los input post en un array
 			$data = array (

@@ -2,12 +2,12 @@
     "users": {
         "1": {
             "id": "58a158da4fc71",
-            "name": "Mat\u00edas Navarro",
-            "email": "mnavarrocarter@gmail.com",
-            "passwd": "0c65be620bc30027b74dc8f4f77108cc8546651c",
+            "name": "Luis Navarro",
+            "email": "lnavarro.carter@gmail.com",
+            "passwd": "35bbc5f54ed23832646db547b7766f62c2d28504",
             "is_admin": true,
             "created": 1486969050,
-            "lastlogin": 1487044499,
+            "lastlogin": 1512055493,
             "ipadd": "::1",
             "is_verified": true,
             "is_active": true,
@@ -22,8 +22,7 @@
             "date": 1486646518,
             "is_published": "on",
             "order": "1",
-            "relation" : {
-                "tabla": "38572305253",
+            "relation": {
                 "tabla": "2583523523"
             }
         },
@@ -108,9 +107,9 @@
         "posts_show_footer": "10",
         "page_name": "Informaci\u00f3n",
         "home_slider": true,
-        "footer_copy_text": "\u00a9 2017 Mat\u00edas Navarro Carter. Todos los derechos reservados.",
-        "footer_description_title": "Mat\u00edas Navarro Carter",
-        "footer_description_content": "Mat\u00edas es un desarrollador web freelance chileno que, junto a su hermano, fund\u00f3 su propia compa\u00f1\u00eda de desarrollo llamada &lt;a href=&quot;https:\/\/ncai.cl&quot; target=&quot;_blank&quot;&gt;Ncai SpA&lt;\/a&gt;. En su tiempo libre, Mat\u00edas gusta de desarrollar diversas aplicaciones y descubrir nuevas tecnolog\u00edas. Vive en Santiago de Chile junto a su esposa Briony, originaria de Irlanda del Norte, con la cual est\u00e1 casado desde Julio de 2017.",
+        "footer_copy_text": "\u00a9 2017 Luis Navarro Carter. Todos los derechos reservados.",
+        "footer_description_title": "Luis Ignacio Navarro Carter",
+        "footer_description_content": "Luis es un desarrollador web freelance chileno que, junto a su hermano, fund\u00f3 su propia compa\u00f1\u00eda de desarrollo llamada &lt;a href=&quot;https:\/\/ncai.cl&quot; target=&quot;_blank&quot;&gt;Ncai SpA&lt;\/a&gt;. En su tiempo libre, Mat\u00edas gusta de desarrollar diversas aplicaciones y descubrir nuevas tecnolog\u00edas. Vive en Santiago de Chile junto a su esposa Briony, originaria de Irlanda del Norte, con la cual est\u00e1 casado desde Julio de 2017.",
         "grecaptcha_site": "",
         "grecaptcha_secret": "",
         "show_login_on_menu": "false"
