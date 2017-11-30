@@ -5,7 +5,7 @@
         <div class="footer-column">
           <h3>Luis Navarro Carter</h3>
           <p class="margin-btm20">
-            Luis es un desarrollador web freelance chileno que, junto a su hermano, fundó su propia compañía de desarrollo llamada <a href="https://ncai.cl" target="_blank">Ncai SpA</a>. En su tiempo libre, Matías gusta de desarrollar diversas aplicaciones y descubrir nuevas tecnologías. Vive en Santiago de Chile junto a su esposa Briony, originaria de Irlanda del Norte, con la cual está casado desde Julio de 2017.
+            Luis es un desarrollador web freelance chileno que, junto a su hermano, fundó su propia compañía de desarrollo llamada <a href="https://ncai.cl" target="_blank">Ncai SpA</a>. En su tiempo libre, le gusta los videoJuegos y le encanta tomar chelitas con sus amigos.
           </p>
           <ul class="list-unstyled list-inline social">
           <?php foreach($socials as $social):?>
