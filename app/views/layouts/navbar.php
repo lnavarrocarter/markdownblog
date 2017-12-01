@@ -50,7 +50,7 @@
         <?php endif;?>
         <?php endif;?>
         <li data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Reporta un problema en GitHub" class="dropdown">
-          <a href="https://github.com/mnavarrocarter/markdownblog/issues" target="_blank"><i class="fa fa-bug fa-fw"></i></a>
+          <a href="https://github.com/lnavarrocarter/markdownblog/issues" target="_blank"><i class="fa fa-bug fa-fw"></i></a>
         </li>
       </ul>
     </div>

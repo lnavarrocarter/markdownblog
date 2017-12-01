@@ -32,7 +32,7 @@ class Tools {
 	}
 
 	public function save_latest_release() {
-		$url = 'https://api.github.com/repos/mnavarrocarter/markdownblog/releases/latest';
+		$url = 'https://api.github.com/repos/lnavarrocarter/markdownblog/releases/latest';
 		// Get cURL resource
 		$curl = curl_init();
 		// Set some options - we are passing in a useragent too here

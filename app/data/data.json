@@ -41,6 +41,14 @@
             "date": 1486795757,
             "is_published": true,
             "order": "3"
+        },
+        "4": {
+            "id": "5a20247f82ab6",
+            "slug": "HolaMundo",
+            "title": "Hola Mundo",
+            "date": 1512055935,
+            "order": false,
+            "is_published": true
         }
     },
     "entries": {
@@ -72,30 +80,39 @@
             "title": "The Markdown Blog",
             "lead": "Conoce The Markdown Blog, la plataforma de blogging m\u00e1s r\u00e1pida, liviana y vers\u00e1til del mercado.",
             "btn_text": "Ver el C\u00f3digo",
-            "btn_link": "https:\/\/github.com\/mnavarrocarter\/markdownblog",
+            "btn_link": "https:\/\/github.com\/lnavarrocarter\/markdownblog",
             "is_published": "on",
             "order": "1"
+        },
+        "2": {
+            "id": "5a2026f6bdc6f",
+            "title": "The Markdown Blog",
+            "lead": "Me gusta mucho Markdown Blog por que es facil de usar.",
+            "btn_text": "Mira lo nuevo.",
+            "btn_link": "https:\/\/www.youtube.com\/watch?v=1LpaTBtl7sA",
+            "is_published": true,
+            "order": false
         }
     },
     "socials": {
         "1": {
             "brand": "facebook",
-            "url": "https:\/\/www.facebook.com\/mnavarrocater",
+            "url": "https:\/\/www.facebook.com\/lnavarrocarter",
             "tooltip": "\u00a1Hazte su amigo en Facebook!"
         },
         "2": {
             "brand": "twitter",
-            "url": "https:\/\/twitter.com\/mnavcar",
+            "url": "https:\/\/twitter.com\/sukealo",
             "tooltip": "\u00a1S\u00edguelo en Twitter!"
         },
         "3": {
             "brand": "github",
-            "url": "https:\/\/github.com\/mnavarrocarter",
+            "url": "https:\/\/github.com\/lnavarrocarter",
             "tooltip": "\u00a1Forkealo en GitHub!"
         },
         "4": {
             "brand": "youtube",
-            "url": "https:\/\/www.youtube.com\/channel\/UCN5wi3JdaI98mStmC-2peEg",
+            "url": "https:\/\/www.youtube.com\/channel\/lnavarrocarter",
             "tooltip": "\u00a1Mira su canal de YouTube!"
         }
     },
